@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButtonCollapsed.addEventListener('click', showFullExplanation);
 
     // Add this line after initTheme()
-    document.querySelector('.quote-text').textContent = `"${getRandomQuote()}"`;
+    getRandomQuote();
 });
 
 // Add loading state handling
@@ -327,19 +327,51 @@ function scrollToResults() {
     });
 }
 
-const friedmanQuotes = [
-    "There is no such thing as a good tax.",
-    "The power to tax is the power to destroy.",
-    "If you put the federal government in charge of the Sahara Desert, in 5 years there'd be a shortage of sand.",
-    "I am in favor of cutting taxes under any circumstances and for any excuse, for any reason, whenever it's possible.",
-    "The most important ways in which I think the Internet will affect the big issue is that it will make it more difficult for government to collect taxes.",
-    "The government solution to a problem is usually as bad as the problem.",
-    "Nothing is so permanent as a temporary government program.",
-    "The only way to stop inflation is to stop inflating the money supply.",
-    "The world runs on individuals pursuing their separate interests."
+const taxQuotes = [
+    {
+        text: "There is no such thing as a good tax.",
+        author: "Milton Friedman"
+    },
+    {
+        text: "The power to tax involves the power to destroy.",
+        author: "Chief Justice John Marshall",
+        source: "McCulloch v. Maryland, 1819"
+    },
+    {
+        text: "In this world nothing can be said to be certain, except death and taxes.",
+        author: "Benjamin Franklin",
+        source: "Letter to Jean-Baptiste Le Roy, 1789"
+    },
+    {
+        text: "If you put the federal government in charge of the Sahara Desert, in 5 years there'd be a shortage of sand.",
+        author: "Milton Friedman"
+    },
+    {
+        text: "The taxpayer: That's someone who works for the federal government but doesn't have to take the civil service examination.",
+        author: "Ronald Reagan",
+        source: "Radio Address to the Nation, 1983"
+    },
+    {
+        text: "I am in favor of cutting taxes under any circumstances and for any excuse, for any reason, whenever it's possible.",
+        author: "Milton Friedman",
+        source: "Interview with Richard Heffner, 1975"
+    },
+    {
+        text: "Government's view of the economy could be summed up in a few short phrases: If it moves, tax it. If it keeps moving, regulate it. And if it stops moving, subsidize it.",
+        author: "Ronald Reagan",
+        source: "Remarks to the White House Conference on Small Business, 1986"
+    }
 ];
 
 function getRandomQuote() {
-    const randomIndex = Math.floor(Math.random() * friedmanQuotes.length);
-    return friedmanQuotes[randomIndex];
+    const randomIndex = Math.floor(Math.random() * taxQuotes.length);
+    const quote = taxQuotes[randomIndex];
+    
+    // Update the quote text
+    const quoteTextElement = document.querySelector('.quote-text');
+    quoteTextElement.textContent = quote.text;
+    
+    // Update the author
+    const quoteAuthorElement = document.querySelector('.quote-author');
+    quoteAuthorElement.textContent = `- ${quote.author}`;
 } 
