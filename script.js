@@ -98,7 +98,19 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButtonCollapsed.addEventListener('click', showFullExplanation);
 });
 
-function calculateTaxImpact() {
+// Add loading state handling
+function showLoading() {
+    document.getElementById('loading-overlay').classList.add('active');
+}
+
+function hideLoading() {
+    document.getElementById('loading-overlay').classList.remove('active');
+}
+
+// Update calculation function
+async function calculateTaxImpact() {
+    showLoading();
+    await new Promise(resolve => setTimeout(resolve, 600)); // Artificial delay for UX
     const incomeTax = parseFloat(document.getElementById('incomeTax').value) / 100;
     const salesTax = parseFloat(document.getElementById('salesTax').value) / 100;
     const iterations = parseInt(document.getElementById('iterations').value);
@@ -178,6 +190,7 @@ function calculateTaxImpact() {
     `;
     
     document.getElementById('results').innerHTML = resultsHTML;
+    hideLoading();
 }
 
 function initTheme() {
@@ -281,4 +294,12 @@ function showToast(message, type = 'success') {
     setTimeout(() => {
         toast.remove();
     }, 3000);
+}
+
+// Add smooth scrolling to results
+function scrollToResults() {
+    document.querySelector('.summary-section').scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
 } 

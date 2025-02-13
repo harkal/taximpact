@@ -7,6 +7,7 @@
     --text-color: #333;
     --transition-speed: 0.3s;
     --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+    --warning-color: #FFA000;
 }
 
 :root[data-theme="light"] {
@@ -789,4 +790,86 @@ h1, h2, h3, h4, h5, h6 {
         margin: 0 auto;
         max-width: 300px;
     }
+}
+
+.disclaimer {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid var(--warning-color);
+    background: color-mix(in srgb, var(--warning-color) 4%, var(--card-background));
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.disclaimer strong {
+    color: var(--warning-color);
+}
+
+[data-theme="dark"] .disclaimer {
+    background: color-mix(in srgb, var(--warning-color) 8%, var(--background-color));
+}
+
+/* Add styles for new elements */
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(var(--background-color-rgb), 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--primary-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.share-prompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    text-align: center;
+    margin: 1.5rem 0 1rem;
+    padding: 0 1rem;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.share-prompt p {
+    margin: 0;
+    color: inherit;
+}
+
+.share-prompt .material-icons-round {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .share-prompt {
+    color: color-mix(in srgb, var(--primary-color) 85%, white);
 }

@@ -164,6 +164,10 @@
                 After <span id="transaction-count">0</span> transactions, 
                 <span id="tax-percentage">0</span>% of the original value goes to taxes!
             </div>
+            <div class="share-prompt">
+                <span class="material-icons-round">trending_up</span>
+                <p>Understanding tax impact is crucial for economic literacy. Share this tool to spread awareness!</p>
+            </div>
             <div class="share-buttons">
                 <button onclick="shareOnTwitter()" class="share-link x-social">
                     <svg class="x-icon" width="16" height="16" viewBox="0 0 24 24">
@@ -186,6 +190,10 @@
             <!-- Results will be inserted here -->
         </div>
 
+        <div class="disclaimer">
+            <p><strong>Disclaimer:</strong> This calculator provides a simplified model for educational purposes. Actual tax impacts may vary based on specific tax laws, deductions, exemptions, and other economic factors not considered in this basic demonstration.</p>
+        </div>
+
         <footer class="footer">
             <div class="footer-content">
                 <p>Created to demonstrate the cumulative impact of taxation on economic activity</p>
@@ -205,6 +213,12 @@
                 </div>
             </div>
         </footer>
+
+        <!-- Add loading state -->
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-spinner"></div>
+            <p>Calculating tax impact...</p>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
