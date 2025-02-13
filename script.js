@@ -110,11 +110,31 @@ function hideLoading() {
 // Update calculation function
 async function calculateTaxImpact() {
     showLoading();
-    await new Promise(resolve => setTimeout(resolve, 600)); // Artificial delay for UX
+    await new Promise(resolve => setTimeout(resolve, 600));
     const incomeTax = parseFloat(document.getElementById('incomeTax').value) / 100;
     const salesTax = parseFloat(document.getElementById('salesTax').value) / 100;
     const iterations = parseInt(document.getElementById('iterations').value);
     
+    // Calculate when money is completely gone
+    let testMoney = 100;
+    let transactionsUntilZero = 0;
+    while (testMoney > 0.01 && transactionsUntilZero < 100) { // Add safety limit of 100
+        const afterIncomeTax = testMoney * (1 - incomeTax);
+        const afterSalesTax = afterIncomeTax / (1 + salesTax);
+        testMoney = afterSalesTax;
+        transactionsUntilZero++;
+    }
+    
+    // Add message about total loss
+    const totalLossMessage = document.querySelector('.total-loss-message');
+    if (transactionsUntilZero < 100) {
+        totalLossMessage.innerHTML = `<span class="material-icons-round">warning</span> 100% of the money will be gone after ${transactionsUntilZero} transactions`;
+        totalLossMessage.style.display = 'block';
+    } else {
+        totalLossMessage.style.display = 'none';
+    }
+
+    // Rest of the existing calculation code...
     let resultsHTML = '<h2>Detailed Transactions</h2>';
     let transactions = [];
     let remainingMoney = 100;

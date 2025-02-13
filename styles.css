@@ -549,6 +549,24 @@ h1, h2, h3, h4, h5, h6 {
     animation: arrowPulse 1.5s infinite;
 }
 
+.impact-message, .total-loss-message {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(244, 67, 54, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #d32f2f;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: 600;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
 .impact-message {
     text-align: center;
     font-size: 1.2rem;
@@ -557,6 +575,21 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 8px;
     background-color: rgba(var(--danger-color-rgb), 0.1);
     color: var(--text-color);
+}
+
+.total-loss-message .material-icons-round {
+    font-size: 1.3rem;
+    color: #d32f2f;
+}
+
+[data-theme="dark"] .total-loss-message {
+    background-color: rgba(244, 67, 54, 0.25);
+    border-color: rgba(244, 67, 54, 0.4);
+    color: #ff5252;
+}
+
+[data-theme="dark"] .total-loss-message .material-icons-round {
+    color: #ff5252;
 }
 
 @keyframes fadeIn {
