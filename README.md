@@ -46,7 +46,7 @@ This project is open source and available under the MIT License.
 
 ## 🔗 Links
 
-- [Live Demo](https://your-demo-url.com)
+- [Live Demo](https://taximpact.netlify.app/)
 - [Source Code](https://github.com/harkal/taximpact)
 
 ## 🙏 Acknowledgments
