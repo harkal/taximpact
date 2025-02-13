@@ -1,67 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tax Impact Calculator</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/icon.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="/icon-32x32.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="/icon-16x16.jpeg">
+    <link rel="apple-touch-icon" href="/icon-180x180.jpeg">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="msapplication-TileColor" content="#2196F3">
+    <meta name="msapplication-TileImage" content="/icon-150x150.jpeg">
+    
+    <!-- Existing links -->
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Tax Impact Calculator</h1>
+        <div class="header-section">
+            <h1>
+                <img src="icon128.jpeg" alt="Tax Calculator Icon" class="header-icon">
+                Tax Impact Calculator
+            </h1>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <span class="material-icons-round">light_mode</span>
+                <span class="material-icons-round">dark_mode</span>
+            </button>
+        </div>
         
-        <div class="explanation">
-            <h2>How Does This Work?</h2>
-            <p>This calculator demonstrates how income tax and sales tax (VAT) combine to affect purchasing power over multiple economic transactions.</p>
-            
-            <h3>Understanding the Process:</h3>
-            <ol>
-                <li><strong>Starting Point:</strong> We begin with 100 units of money.</li>
-                <li><strong>Income Tax:</strong> First, income tax is deducted from your earnings.</li>
-                <li><strong>Sales Tax/VAT:</strong> Then, when you spend the remaining money, sales tax/VAT is applied.</li>
-                <li><strong>Multiple Transactions:</strong> This process repeats for each transaction, showing how taxes compound over time.</li>
-            </ol>
-
-            <p>The green bars show how much money remains in the productive economy, while the red bars show the portion taken as tax. Watch how the proportions change with each transaction!</p>
+        <div id="explanation-section" class="explanation card">
+            <div class="explanation-header">
+                <h2>How Does This Work?</h2>
+                <button id="toggle-explanation" class="toggle-button" aria-label="Toggle explanation">
+                    <span class="material-icons-round">expand_less</span>
+                </button>
+            </div>
+            <div id="explanation-content" class="explanation-content">
+                <p>This calculator demonstrates how income tax and sales tax (VAT) combine to affect purchasing power over multiple economic transactions.</p>
+                
+                <h3>Understanding the Process:</h3>
+                <ol>
+                    <li><strong>Starting Point:</strong> We begin with 100 units of money.</li>
+                    <li><strong>Income Tax:</strong> First, income tax is deducted from your earnings.</li>
+                    <li><strong>Sales Tax/VAT:</strong> Then, when you spend the remaining money, sales tax/VAT is applied.</li>
+                    <li><strong>Multiple Transactions:</strong> This process repeats for each transaction, showing how taxes compound over time.</li>
+                </ol>
+            </div>
         </div>
 
-        <div class="input-section">
+        <div id="explanation-collapsed" class="explanation-collapsed card hidden">
+            <button id="toggle-explanation-collapsed" class="toggle-button-collapsed" aria-label="Show explanation">
+                <span class="material-icons-round">info</span>
+                <span>How does it work?</span>
+            </button>
+        </div>
+
+        <div class="input-section card">
             <div class="input-group">
-                <label for="country">Select Country:</label>
-                <select id="country" onchange="updateTaxRates()">
-                    <option value="">Custom</option>
-                    <option value="US">United States</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="DE">Germany</option>
-                    <option value="FR">France</option>
-                    <option value="SE">Sweden</option>
-                    <option value="DK">Denmark</option>
-                    <option value="ES">Spain</option>
-                    <option value="GR">Greece</option>
-                </select>
+                <label for="country">
+                    <span class="material-icons-round">public</span>
+                    Select Country
+                </label>
+                <span class="tax-note">Choose your country for automatic tax rates</span>
+                <div class="input-wrapper">
+                    <select id="country" onchange="updateTaxRates()">
+                        <option value="">Custom</option>
+                        <option value="US">United States</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="DE">Germany</option>
+                        <option value="FR">France</option>
+                        <option value="SE">Sweden</option>
+                        <option value="DK">Denmark</option>
+                        <option value="ES">Spain</option>
+                        <option value="GR">Greece</option>
+                    </select>
+                </div>
             </div>
             
             <div class="input-group">
-                <label for="incomeTax">Income Tax (%):</label>
-                <input type="number" id="incomeTax" min="0" max="100" value="20">
+                <label for="incomeTax">
+                    <span class="material-icons-round">payments</span>
+                    Income Tax (%)
+                </label>
                 <span class="tax-note">Average rate for median income</span>
+                <div class="input-wrapper">
+                    <input type="number" id="incomeTax" min="0" max="100" value="20">
+                </div>
             </div>
             
             <div class="input-group">
-                <label for="salesTax">Sales Tax/VAT (%):</label>
-                <input type="number" id="salesTax" min="0" max="100" value="15">
+                <label for="salesTax">
+                    <span class="material-icons-round">shopping_cart</span>
+                    Sales Tax/VAT (%)
+                </label>
                 <span class="tax-note">Standard rate</span>
+                <div class="input-wrapper">
+                    <input type="number" id="salesTax" min="0" max="100" value="15">
+                </div>
             </div>
             
             <div class="input-group">
-                <label for="iterations">Number of Transactions:</label>
-                <input type="number" id="iterations" min="1" max="20" value="5">
+                <label for="iterations">
+                    <span class="material-icons-round">repeat</span>
+                    Number of Transactions
+                </label>
+                <span class="tax-note">How many times money changes hands in the economy (1-20)</span>
+                <div class="input-wrapper">
+                    <input type="number" id="iterations" min="1" max="20" value="5">
+                </div>
+            </div>
+        </div>
+
+        <div class="summary-section card">
+            <h2><span class="material-icons-round">analytics</span>Final Impact</h2>
+            <div class="summary-visualization">
+                <div class="money-stack">
+                    <div class="money-icon total">💰</div>
+                    <div class="money-label">Starting Amount</div>
+                    <div class="money-value">100€</div>
+                </div>
+                <div class="arrow-animation">
+                    <div class="arrow">➜</div>
+                </div>
+                <div class="money-stack">
+                    <div class="money-icon remaining">💰</div>
+                    <div class="money-label">Remaining Value</div>
+                    <div id="final-value" class="money-value">--</div>
+                </div>
+                <div class="money-stack">
+                    <div class="money-icon tax">🏛️</div>
+                    <div class="money-label">Total Tax</div>
+                    <div id="total-tax" class="money-value">--</div>
+                </div>
+            </div>
+            <div id="impact-message" class="impact-message">
+                After <span id="transaction-count">0</span> transactions, 
+                <span id="tax-percentage">0</span>% of the original value goes to taxes!
+            </div>
+            <div class="share-buttons">
+                <button onclick="shareOnTwitter()" class="share-link x-social">
+                    <svg class="x-icon" width="16" height="16" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </button>
+                <button onclick="shareOnLinkedIn()" class="share-link linkedin">
+                    <span class="material-icons-round">work</span>
+                </button>
+                <button onclick="shareOnFacebook()" class="share-link facebook">
+                    <span class="material-icons-round">facebook</span>
+                </button>
+                <button onclick="copyLink()" class="share-link copy-link">
+                    <span class="material-icons-round">link</span>
+                </button>
             </div>
         </div>
 
         <div id="results" class="results-section">
             <!-- Results will be inserted here -->
         </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Created to demonstrate the cumulative impact of taxation on economic activity</p>
+                <div class="footer-links">
+                    <a href="https://github.com/yourusername/tax-impact-calculator" target="_blank" rel="noopener noreferrer">
+                        <span class="material-icons-round">code</span>
+                        Source Code
+                    </a>
+                    <span class="footer-separator">•</span>
+                    <span>© 2024</span>
+                </div>
+                <div class="footer-credit">
+                    <span>✨ Crafted with vibe coding using Claude-3.5-Sonnet</span>
+                    <span class="material-icons-round">auto_awesome</span>
+                </div>
+            </div>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>
