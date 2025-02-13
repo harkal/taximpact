@@ -22,204 +22,211 @@
 </head>
 <body>
     <div class="container">
-        <div class="header-section">
-            <h1>
-                <img src="icon128.jpeg" alt="Tax Calculator Icon" class="header-icon">
-                Tax Impact Calculator
-            </h1>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                <span class="material-icons-round">light_mode</span>
-                <span class="material-icons-round">dark_mode</span>
-            </button>
-        </div>
-        
-        <div id="explanation-section" class="explanation card">
-            <div class="explanation-header">
-                <h2>How Does This Work?</h2>
-                <button id="toggle-explanation" class="toggle-button" aria-label="Toggle explanation">
-                    <span class="material-icons-round">expand_less</span>
-                </button>
-            </div>
-            <div id="explanation-content" class="explanation-content">
-                <p>This calculator reveals how taxes cascade through the economy as money changes hands multiple times. Each transaction faces both income and sales taxes, creating a compounding effect that reduces purchasing power.</p>
+        <main>
+            
+            <div class="header-section">
+                <h1><img src="icon128.jpeg" alt="Tax Calculator Icon" class="header-icon">Tax Impact Calculator</h1>
+                <div class="quote-section">
+                    <span class="material-icons-round">format_quote</span>
+                    <p class="quote-text"></p>
+                    <p class="quote-author">- Milton Friedman</p>
+                </div>
                 
-                <div class="explanation-grid">
-                    <div class="explanation-text">
-                        <h3>The Process:</h3>
-                        <ol>
-                            <li><strong>Initial Amount:</strong> We start with €100 of earned income.</li>
-                            <li><strong>Income Tax Impact:</strong> When someone earns this money, income tax reduces the amount they can spend.</li>
-                            <li><strong>Sales Tax/VAT Impact:</strong> When spending the remaining money, sales tax/VAT further reduces its purchasing power.</li>
-                            <li><strong>Ripple Effect:</strong> As this money continues to circulate (e.g., business revenue → employee salary → consumer spending), the same tax effects repeat, progressively diminishing the original €100.</li>
-                        </ol>
+            </div>
+            <div id="explanation-section" class="explanation card">
+                <div class="explanation-header">
+                    <h2>How Does This Work?</h2>
+                    <button id="toggle-explanation" class="toggle-button" aria-label="Toggle explanation">
+                        <span class="material-icons-round">expand_less</span>
+                    </button>
+                </div>
+                
+                <div id="explanation-content" class="explanation-content">
+                    <p>This calculator reveals how taxes cascade through the economy as money changes hands multiple times. Each transaction faces both income and sales taxes, creating a compounding effect that reduces purchasing power.</p>
+                    
+                    <div class="explanation-grid">
+                        <div class="explanation-text">
+                            <h3>The Process:</h3>
+                            <ol>
+                                <li><strong>Initial Amount:</strong> We start with €100 of earned income.</li>
+                                <li><strong>Income Tax Impact:</strong> When someone earns this money, income tax reduces the amount they can spend.</li>
+                                <li><strong>Sales Tax/VAT Impact:</strong> When spending the remaining money, sales tax/VAT further reduces its purchasing power.</li>
+                                <li><strong>Ripple Effect:</strong> As this money continues to circulate (e.g., business revenue → employee salary → consumer spending), the same tax effects repeat, progressively diminishing the original €100.</li>
+                            </ol>
+                        </div>
+
+                        <div class="tax-flow">
+                            💰 €100 Initial Money
+                            <br>↓<br>
+                            💼 Business Revenue
+                            <br>↓ <span class="tax-note">Income Tax</span><br>
+                            💵 Reduced Amount
+                            <br>↓ <span class="tax-note">Sales Tax/VAT</span><br>
+                            🛍️ Consumer Spending
+                            <br>↓<br>
+                            💼 Business Revenue Again
+                            <br>↓ <span class="tax-note">Income Tax</span><br>
+                            💵 Further Reduced
+                            <br>↓ <span class="tax-note">Sales Tax/VAT</span><br>
+                            🛍️ More Spending...
+                        </div>
                     </div>
 
-                    <div class="tax-flow">
-                        💰 €100 Initial Money
-                        <br>↓<br>
-                        💼 Business Revenue
-                        <br>↓ <span class="tax-note">Income Tax</span><br>
-                        💵 Reduced Amount
-                        <br>↓ <span class="tax-note">Sales Tax/VAT</span><br>
-                        🛍️ Consumer Spending
-                        <br>↓<br>
-                        💼 Business Revenue Again
-                        <br>↓ <span class="tax-note">Income Tax</span><br>
-                        💵 Further Reduced
-                        <br>↓ <span class="tax-note">Sales Tax/VAT</span><br>
-                        🛍️ More Spending...
+                    <p>Try adjusting the tax rates and number of transactions to see how different scenarios affect the final purchasing power of the initial €100.</p>
+                </div>
+            </div>
+
+            <div id="explanation-collapsed" class="explanation-collapsed card hidden">
+                <button id="toggle-explanation-collapsed" class="toggle-button-collapsed" aria-label="Show explanation">
+                    <span class="material-icons-round">info</span>
+                    <span>How does it work?</span>
+                </button>
+            </div>
+
+            <div class="input-section card">
+                <div class="input-group">
+                    <label for="country">
+                        <span class="material-icons-round">public</span>
+                        Select Country
+                    </label>
+                    <span class="tax-note">Choose your country for automatic tax rates</span>
+                    <div class="input-wrapper">
+                        <select id="country" onchange="updateTaxRates()">
+                            <option value="">Custom</option>
+                            <option value="US">United States</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="DE">Germany</option>
+                            <option value="FR">France</option>
+                            <option value="SE">Sweden</option>
+                            <option value="DK">Denmark</option>
+                            <option value="ES">Spain</option>
+                            <option value="GR">Greece</option>
+                        </select>
                     </div>
                 </div>
+                
+                <div class="input-group">
+                    <label for="incomeTax">
+                        <span class="material-icons-round">payments</span>
+                        Income Tax (%)
+                    </label>
+                    <span class="tax-note">Average rate for median income</span>
+                    <div class="input-wrapper">
+                        <input type="number" id="incomeTax" min="0" max="100" value="20">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="salesTax">
+                        <span class="material-icons-round">shopping_cart</span>
+                        Sales Tax/VAT (%)
+                    </label>
+                    <span class="tax-note">Standard rate</span>
+                    <div class="input-wrapper">
+                        <input type="number" id="salesTax" min="0" max="100" value="15">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="iterations">
+                        <span class="material-icons-round">repeat</span>
+                        Number of Transactions
+                    </label>
+                    <span class="tax-note">How many times money changes hands in the economy (1-20)</span>
+                    <div class="input-wrapper">
+                        <input type="number" id="iterations" min="1" max="20" value="5">
+                    </div>
+                </div>
+            </div>
 
-                <p>Try adjusting the tax rates and number of transactions to see how different scenarios affect the final purchasing power of the initial €100.</p>
-            </div>
-        </div>
-
-        <div id="explanation-collapsed" class="explanation-collapsed card hidden">
-            <button id="toggle-explanation-collapsed" class="toggle-button-collapsed" aria-label="Show explanation">
-                <span class="material-icons-round">info</span>
-                <span>How does it work?</span>
-            </button>
-        </div>
-
-        <div class="input-section card">
-            <div class="input-group">
-                <label for="country">
-                    <span class="material-icons-round">public</span>
-                    Select Country
-                </label>
-                <span class="tax-note">Choose your country for automatic tax rates</span>
-                <div class="input-wrapper">
-                    <select id="country" onchange="updateTaxRates()">
-                        <option value="">Custom</option>
-                        <option value="US">United States</option>
-                        <option value="UK">United Kingdom</option>
-                        <option value="DE">Germany</option>
-                        <option value="FR">France</option>
-                        <option value="SE">Sweden</option>
-                        <option value="DK">Denmark</option>
-                        <option value="ES">Spain</option>
-                        <option value="GR">Greece</option>
-                    </select>
+            <div class="summary-section card">
+                <h2><span class="material-icons-round">analytics</span>Final Impact</h2>
+                <div class="summary-visualization">
+                    <div class="money-stack">
+                        <div class="money-icon total">💰</div>
+                        <div class="money-label">Starting Amount</div>
+                        <div class="money-value">100€</div>
+                    </div>
+                    <div class="arrow-animation">
+                        <div class="arrow">➜</div>
+                    </div>
+                    <div class="money-stack">
+                        <div class="money-icon remaining">💰</div>
+                        <div class="money-label">Remaining Value</div>
+                        <div id="final-value" class="money-value">--</div>
+                    </div>
+                    <div class="money-stack">
+                        <div class="money-icon tax">🏛️</div>
+                        <div class="money-label">Total Tax</div>
+                        <div id="total-tax" class="money-value">--</div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="incomeTax">
-                    <span class="material-icons-round">payments</span>
-                    Income Tax (%)
-                </label>
-                <span class="tax-note">Average rate for median income</span>
-                <div class="input-wrapper">
-                    <input type="number" id="incomeTax" min="0" max="100" value="20">
+                <div id="impact-message" class="impact-message">
+                    After <span id="transaction-count">0</span> transactions, 
+                    <span id="tax-percentage">0</span>% of the original value goes to taxes!
                 </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="salesTax">
-                    <span class="material-icons-round">shopping_cart</span>
-                    Sales Tax/VAT (%)
-                </label>
-                <span class="tax-note">Standard rate</span>
-                <div class="input-wrapper">
-                    <input type="number" id="salesTax" min="0" max="100" value="15">
+                <div class="total-loss-message"></div>
+                <div class="share-prompt">
+                    <span class="material-icons-round">trending_up</span>
+                    <p>Understanding tax impact is crucial for economic literacy. Share this tool to spread awareness!</p>
                 </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="iterations">
-                    <span class="material-icons-round">repeat</span>
-                    Number of Transactions
-                </label>
-                <span class="tax-note">How many times money changes hands in the economy (1-20)</span>
-                <div class="input-wrapper">
-                    <input type="number" id="iterations" min="1" max="20" value="5">
-                </div>
-            </div>
-        </div>
-
-        <div class="summary-section card">
-            <h2><span class="material-icons-round">analytics</span>Final Impact</h2>
-            <div class="summary-visualization">
-                <div class="money-stack">
-                    <div class="money-icon total">💰</div>
-                    <div class="money-label">Starting Amount</div>
-                    <div class="money-value">100€</div>
-                </div>
-                <div class="arrow-animation">
-                    <div class="arrow">➜</div>
-                </div>
-                <div class="money-stack">
-                    <div class="money-icon remaining">💰</div>
-                    <div class="money-label">Remaining Value</div>
-                    <div id="final-value" class="money-value">--</div>
-                </div>
-                <div class="money-stack">
-                    <div class="money-icon tax">🏛️</div>
-                    <div class="money-label">Total Tax</div>
-                    <div id="total-tax" class="money-value">--</div>
-                </div>
-            </div>
-            <div id="impact-message" class="impact-message">
-                After <span id="transaction-count">0</span> transactions, 
-                <span id="tax-percentage">0</span>% of the original value goes to taxes!
-            </div>
-            <div class="total-loss-message"></div>
-            <div class="share-prompt">
-                <span class="material-icons-round">trending_up</span>
-                <p>Understanding tax impact is crucial for economic literacy. Share this tool to spread awareness!</p>
-            </div>
-            <div class="share-buttons">
-                <button onclick="shareOnTwitter()" class="share-link x-social">
-                    <svg class="x-icon" width="16" height="16" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                </button>
-                <button onclick="shareOnLinkedIn()" class="share-link linkedin">
-                    <span class="material-icons-round">work</span>
-                </button>
-                <button onclick="shareOnFacebook()" class="share-link facebook">
-                    <span class="material-icons-round">facebook</span>
-                </button>
-                <button onclick="copyLink()" class="share-link copy-link">
-                    <span class="material-icons-round">link</span>
-                </button>
-            </div>
-        </div>
-
-        <div id="results" class="results-section">
-            <!-- Results will be inserted here -->
-        </div>
-
-        <div class="disclaimer">
-            <p><strong>Disclaimer:</strong> This calculator provides a simplified model for educational purposes. Actual tax impacts may vary based on specific tax laws, deductions, exemptions, and other economic factors not considered in this basic demonstration.</p>
-        </div>
-
-        <footer class="footer">
-            <div class="footer-content">
-                <p>Created to demonstrate the cumulative impact of taxation on economic activity</p>
-                <div class="footer-links">
-                    <a href="https://github.com/harkal/taximpact" target="_blank" rel="noopener noreferrer">
-                        <svg class="github-icon" height="20" width="20" viewBox="0 0 16 16">
-                            <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                <div class="share-buttons">
+                    <button onclick="shareOnTwitter()" class="share-link x-social">
+                        <svg class="x-icon" width="16" height="16" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
-                        Source Code
-                    </a>
-                    <span class="footer-separator">•</span>
-                    <span>© 2025</span>
-                </div>
-                <div class="footer-credit">
-                    <span>✨ Crafted with vibe coding using Claude-3.5-Sonnet</span>
-                    <span class="material-icons-round">auto_awesome</span>
+                    </button>
+                    <button onclick="shareOnLinkedIn()" class="share-link linkedin">
+                        <span class="material-icons-round">work</span>
+                    </button>
+                    <button onclick="shareOnFacebook()" class="share-link facebook">
+                        <span class="material-icons-round">facebook</span>
+                    </button>
+                    <button onclick="copyLink()" class="share-link copy-link">
+                        <span class="material-icons-round">link</span>
+                    </button>
                 </div>
             </div>
-        </footer>
 
-        <!-- Add loading state -->
-        <div class="loading-overlay" id="loading-overlay">
-            <div class="loading-spinner"></div>
-            <p>Calculating tax impact...</p>
-        </div>
+            <div id="results" class="results-section">
+                <!-- Results will be inserted here -->
+            </div>
+
+            <div class="disclaimer">
+                <p><strong>Disclaimer:</strong> This calculator provides a simplified model for educational purposes. Actual tax impacts may vary based on specific tax laws, deductions, exemptions, and other economic factors not considered in this basic demonstration.</p>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-content">
+                    <p>Created to demonstrate the cumulative impact of taxation on economic activity</p>
+                    <div class="footer-links">
+                        <a href="https://github.com/harkal/taximpact" target="_blank" rel="noopener noreferrer">
+                            <svg class="github-icon" height="20" width="20" viewBox="0 0 16 16">
+                                <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            Source Code
+                        </a>
+                        <span class="footer-separator">•</span>
+                        <span>© 2025</span>
+                    </div>
+                    <div class="footer-credit">
+                        <span>✨ Crafted with vibe coding using Claude-3.5-Sonnet</span>
+                        <span class="material-icons-round">auto_awesome</span>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- Add loading state -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="loading-spinner"></div>
+                <p>Calculating tax impact...</p>
+            </div>
+        </main>
+    </div>
+    <div class="theme-toggle-wrapper">
+        <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode">
+            <span class="material-icons-round">dark_mode</span>
+        </button>
     </div>
     <script src="script.js"></script>
 </body>

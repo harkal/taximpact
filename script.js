@@ -96,6 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     toggleButton.addEventListener('click', showCollapsedExplanation);
     toggleButtonCollapsed.addEventListener('click', showFullExplanation);
+
+    // Add this line after initTheme()
+    document.querySelector('.quote-text').textContent = `"${getRandomQuote()}"`;
 });
 
 // Add loading state handling
@@ -322,4 +325,21 @@ function scrollToResults() {
         behavior: 'smooth',
         block: 'center'
     });
+}
+
+const friedmanQuotes = [
+    "There is no such thing as a good tax.",
+    "The power to tax is the power to destroy.",
+    "If you put the federal government in charge of the Sahara Desert, in 5 years there'd be a shortage of sand.",
+    "I am in favor of cutting taxes under any circumstances and for any excuse, for any reason, whenever it's possible.",
+    "The most important ways in which I think the Internet will affect the big issue is that it will make it more difficult for government to collect taxes.",
+    "The government solution to a problem is usually as bad as the problem.",
+    "Nothing is so permanent as a temporary government program.",
+    "The only way to stop inflation is to stop inflating the money supply.",
+    "The world runs on individuals pursuing their separate interests."
+];
+
+function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * friedmanQuotes.length);
+    return friedmanQuotes[randomIndex];
 } 
