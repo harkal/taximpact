@@ -152,10 +152,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .explanation-content {
-    max-height: 1000px;
+    max-height: none;
     opacity: 1;
     transition: all 0.3s ease-in-out;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .toggle-button {
@@ -1012,4 +1012,118 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
         max-width: 100%;
     }
+}
+
+/* Mobile-friendly styles */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    /* Make text more readable on small screens */
+    p, li {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    /* Ensure images don't overflow */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Adjust container widths */
+    .container {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    /* Stack elements vertically on mobile */
+    .row {
+        flex-direction: column;
+    }
+
+    /* Full width columns on mobile */
+    .column {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    /* Adjust navigation for mobile */
+    nav {
+        padding: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 5px 0;
+    }
+
+    /* Adjust buttons for better touch targets */
+    button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 20px;
+    }
+
+    .explanation.card {
+        padding: 1.5rem;
+    }
+
+    .explanation-content {
+        padding-bottom: 1rem;
+    }
+
+    .explanation-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .tax-flow {
+        margin: 1rem auto;
+        padding: 1rem;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .explanation-text {
+        padding-right: 0;
+    }
+
+    .explanation-text ol {
+        padding-left: 1.5rem;
+    }
+
+    .impact-message {
+        font-size: 1rem;
+        padding: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        line-height: 1.4;
+    }
+
+    /* Adjust the transaction count and percentage to display better */
+    #transaction-count,
+    #tax-percentage {
+        display: inline-block;
+        font-weight: 600;
+        color: var(--danger-color);
+    }
+
+    /* Add some spacing between the numbers and text */
+    .impact-message span {
+        margin: 0 0.2rem;
+    }
+}
+
+/* Ensure proper touch target sizes */
+a, button, input, select {
+    min-height: 44px;
+    min-width: 44px;
 }
