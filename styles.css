@@ -436,7 +436,8 @@ h1, h2, h3, h4, h5, h6 {
 .footer-content {
     text-align: center;
     color: var(--text-color);
-    opacity: 0.8;
+    opacity: 0.6;
+    font-size: 0.85rem;
 }
 
 .footer-links {
@@ -445,6 +446,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    font-size: 0.85rem;
 }
 
 .footer-links a {
@@ -454,10 +456,11 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 0.5rem;
     transition: opacity var(--transition-speed);
+    opacity: 0.6;
 }
 
 .footer-links a:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .footer-links .material-icons-round {
@@ -465,13 +468,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .github-icon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+    color: var(--text-color);
 }
 
 .footer-separator {
-    color: var(--text-color);
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 /* Responsive footer */
