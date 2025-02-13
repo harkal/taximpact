@@ -84,6 +84,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const explanationSection = document.getElementById('explanation-section');
     const explanationCollapsed = document.getElementById('explanation-collapsed');
     
+    // Start with the explanation hidden
+    explanationSection.classList.add('hidden');
+    explanationCollapsed.classList.remove('hidden');
+    
     function showFullExplanation() {
         explanationSection.classList.remove('hidden');
         explanationCollapsed.classList.add('hidden');
