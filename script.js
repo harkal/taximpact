@@ -273,7 +273,7 @@ function getShareText() {
         }
     }
     
-    text += `you lose ${taxPercentage}% of your money after just ${iterations} transactions! 🚨`;
+    text += `${taxPercentage}% of the money will be gone after just ${iterations} transactions! 🚨`;
     
     return text;
 }
