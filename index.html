@@ -43,13 +43,33 @@
             <div id="explanation-content" class="explanation-content">
                 <p>This calculator reveals how taxes cascade through the economy as money changes hands multiple times. Each transaction faces both income and sales taxes, creating a compounding effect that reduces purchasing power.</p>
                 
-                <h3>The Process:</h3>
-                <ol>
-                    <li><strong>Initial Amount:</strong> We start with €100 of earned income.</li>
-                    <li><strong>Income Tax Impact:</strong> When someone earns this money, income tax reduces the amount they can spend.</li>
-                    <li><strong>Sales Tax/VAT Impact:</strong> When spending the remaining money, sales tax/VAT further reduces its purchasing power.</li>
-                    <li><strong>Ripple Effect:</strong> As this money continues to circulate (e.g., business revenue → employee salary → consumer spending), the same tax effects repeat, progressively diminishing the original €100.</li>
-                </ol>
+                <div class="explanation-grid">
+                    <div class="explanation-text">
+                        <h3>The Process:</h3>
+                        <ol>
+                            <li><strong>Initial Amount:</strong> We start with €100 of earned income.</li>
+                            <li><strong>Income Tax Impact:</strong> When someone earns this money, income tax reduces the amount they can spend.</li>
+                            <li><strong>Sales Tax/VAT Impact:</strong> When spending the remaining money, sales tax/VAT further reduces its purchasing power.</li>
+                            <li><strong>Ripple Effect:</strong> As this money continues to circulate (e.g., business revenue → employee salary → consumer spending), the same tax effects repeat, progressively diminishing the original €100.</li>
+                        </ol>
+                    </div>
+
+                    <div class="tax-flow">
+                        💰 €100 Initial Money
+                        <br>↓<br>
+                        💼 Business Revenue
+                        <br>↓ <span class="tax-note">Income Tax</span><br>
+                        💵 Reduced Amount
+                        <br>↓ <span class="tax-note">Sales Tax/VAT</span><br>
+                        🛍️ Consumer Spending
+                        <br>↓<br>
+                        💼 Business Revenue Again
+                        <br>↓ <span class="tax-note">Income Tax</span><br>
+                        💵 Further Reduced
+                        <br>↓ <span class="tax-note">Sales Tax/VAT</span><br>
+                        🛍️ More Spending...
+                    </div>
+                </div>
 
                 <p>Try adjusting the tax rates and number of transactions to see how different scenarios affect the final purchasing power of the initial €100.</p>
             </div>

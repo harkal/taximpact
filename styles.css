@@ -742,3 +742,51 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 12px;
     object-fit: cover;
 }
+
+.tax-flow {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--card-background);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    line-height: 1.8;
+}
+
+.tax-note {
+    color: var(--danger-color);
+    font-size: 0.85rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+[data-theme="dark"] .tax-flow {
+    background: var(--background-color);
+}
+
+.explanation-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+    margin: 2rem 0;
+}
+
+.explanation-text {
+    padding-right: 1rem;
+}
+
+@media (max-width: 768px) {
+    .explanation-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .explanation-text {
+        padding-right: 0;
+    }
+    
+    .tax-flow {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+}
