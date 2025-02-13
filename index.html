@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Impact Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tax Impact Calculator</h1>
+        
+        <div class="explanation">
+            <h2>How Does This Work?</h2>
+            <p>This calculator demonstrates how income tax and sales tax (VAT) combine to affect purchasing power over multiple economic transactions.</p>
+            
+            <h3>Understanding the Process:</h3>
+            <ol>
+                <li><strong>Starting Point:</strong> We begin with 100 units of money.</li>
+                <li><strong>Income Tax:</strong> First, income tax is deducted from your earnings.</li>
+                <li><strong>Sales Tax/VAT:</strong> Then, when you spend the remaining money, sales tax/VAT is applied.</li>
+                <li><strong>Multiple Transactions:</strong> This process repeats for each transaction, showing how taxes compound over time.</li>
+            </ol>
+
+            <p>The green bars show how much money remains in the productive economy, while the red bars show the portion taken as tax. Watch how the proportions change with each transaction!</p>
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="country">Select Country:</label>
+                <select id="country" onchange="updateTaxRates()">
+                    <option value="">Custom</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="SE">Sweden</option>
+                    <option value="DK">Denmark</option>
+                    <option value="ES">Spain</option>
+                    <option value="GR">Greece</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="incomeTax">Income Tax (%):</label>
+                <input type="number" id="incomeTax" min="0" max="100" value="20">
+                <span class="tax-note">Average rate for median income</span>
+            </div>
+            
+            <div class="input-group">
+                <label for="salesTax">Sales Tax/VAT (%):</label>
+                <input type="number" id="salesTax" min="0" max="100" value="15">
+                <span class="tax-note">Standard rate</span>
+            </div>
+            
+            <div class="input-group">
+                <label for="iterations">Number of Transactions:</label>
+                <input type="number" id="iterations" min="1" max="20" value="5">
+            </div>
+        </div>
+
+        <div id="results" class="results-section">
+            <!-- Results will be inserted here -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

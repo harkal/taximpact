@@ -1,0 +1,129 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.input-section {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: inline-block;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.input-group input {
+    width: 100px;
+    padding: 5px;
+}
+
+.input-group select {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.transaction-bar {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.bar {
+    height: 30px;
+    display: flex;
+    margin-top: 5px;
+}
+
+.economy-portion {
+    background-color: #4CAF50;
+    height: 100%;
+    display: inline-block;
+}
+
+.tax-portion {
+    background-color: #f44336;
+    height: 100%;
+    display: inline-block;
+}
+
+.legend {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+}
+
+.explanation {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.explanation h2 {
+    color: #2e7d32;
+    margin-top: 0;
+}
+
+.explanation h3 {
+    color: #2e7d32;
+    margin-top: 15px;
+}
+
+.explanation ol {
+    padding-left: 20px;
+}
+
+.explanation li {
+    margin-bottom: 10px;
+}
+
+.explanation p {
+    margin-bottom: 15px;
+}
+
+.tax-note {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 10px;
+    font-style: italic;
+} 
